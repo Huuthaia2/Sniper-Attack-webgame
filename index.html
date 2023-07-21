@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from sniper-attack.apps.minigame.vip/minigame-index.html?mn_config=https://indigo.minigame.vip/v1/api/channel/indigo/main/game/sniper-attack/config&ts=1689925326488 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 Jul 2023 07:44:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+
+    <title>Sniper Attack</title>
+    <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui=true" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <meta name="x5-page-mode" content="app">
+    <script src="sdk.minigame.vip/js/1.5/minigame9d7a.js?t=1685586802"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <script src="fbinstant.js"></script>
+    <script>
+
+        function GamePause () {
+            window.cc && cc.director.pause()
+        }
+        function GameResume () {
+            window.cc && cc.director.resume()
+        }
+
+        window.$T_GAME_VERSION = ""
+        window.$T_PROGRESS = 0;
+        window.$T_FB_Width = 0;
+        window.$T_FB_Height = 0;
+        window.$T_FB_INITIALIZED = false;
+
+        ! function () {
+            window.$T_FB_Width = window.innerWidth;
+            window.$T_FB_Height = window.innerHeight;
+
+            if (!window.XFBI) return;
+            XFBI.initializeAsync().then(function () {
+                window.$T_FB_INITIALIZED = true;
+
+                function startTick () {
+                    var p = 0;
+                    var tick = setInterval(function () {
+                        var r = window.$T_PROGRESS || 0;
+                        if (p < 100) p += .25;
+                        p = Math.max(r, p);
+                        var progress = p * .8 + r * .2;
+                        XFBI.setLoadingProgress(progress);
+                        if (progress > 99.9) {
+                            clearInterval(tick);
+                        }
+                    }, 50);
+                }
+                startTick();
+            })
+        }();
+
+        function adjuest () {
+            if (window.innerWidth != window.$T_FB_Width && window.$T_FB_Width > 0) {
+                window.innerWidth = window.$T_FB_Width;
+            }
+            if (window.innerHeight != window.$T_FB_Height && window.$T_FB_Width > 0) {
+                window.innerHeight = window.$T_FB_Height;
+            }
+        }
+        window.onresize = adjuest;
+        adjuest();
+    </script>
+    <div id="GameDiv" cc_exact_fit_screen="true">
+        <div id="Cocos3dGameContainer">
+            <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="99"></canvas>
+        </div>
+    </div>
+
+    <script src="src/polyfills.bundle.js" charset="utf-8"> </script>
+    <script src="src/system.bundle.js" charset="utf-8"> </script>
+    <script src="src/import-map.json" type="systemjs-importmap" charset="utf-8"> </script>
+
+    <script>
+        System.import('index.js').catch(function (err) { console.error(err); })
+    </script>
+
+</body>
+
+
+<!-- Mirrored from sniper-attack.apps.minigame.vip/minigame-index.html?mn_config=https://indigo.minigame.vip/v1/api/channel/indigo/main/game/sniper-attack/config&ts=1689925326488 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 Jul 2023 07:44:32 GMT -->
+</html>
